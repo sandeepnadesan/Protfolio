@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandeep Nadesan | AI/ML Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 2.5rem;
+            height: calc(100% - 2.5rem);
+            width: 2px;
+            background: #e2e8f0;
+        }
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        @keyframes breathing {
+        0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+        }
+        50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+        }
+        }
+
+        .animate-breathing {
+        animation: breathing 3s infinite ease-in-out;
+        }   
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full bg-white shadow-md z-50 transition-transform duration-500">
+        <div class="w-full px-2 sm:px-4 lg:px-6">
+          <div class="flex justify-between h-16">
+            <div class="flex items-center justify-start">
+              <span class="text-xl font-bold text-blue-600">Sandeep Nadesan</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+              <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 px-2 py-2">Home</a>
+              <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 px-2 py-2">About</a>
+              <a href="#education" class="nav-link text-gray-700 hover:text-blue-600 px-2 py-2">Education</a>
+              <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600 px-2 py-2">Experience</a>
+              <a href="#projects" class="nav-link text-gray-700 hover:text-blue-600 px-2 py-2">Projects</a>
+              <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 px-2 py-2">Contact</a>
+            </div>
+            <div class="md:hidden flex items-center">
+              <button id="menu-btn" class="text-gray-500 hover:text-blue-600 focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Home</a>
+            <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-blue-600">About</a>
+            <a href="#education" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Education</a>
+            <a href="#experience" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Experience</a>
+            <a href="#projects" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Projects</a>
+            <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-blue-600">Contact</a>
+          </div>
+        </div>
+      </nav>
+      
+      <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+      
+        window.addEventListener('scroll', function () {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+          if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            navbar.style.transform = "translateY(-100%)";
+          } else {
+            // Scrolling up
+            navbar.style.transform = "translateY(0)";
+          }
+      
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+      </script>
+      
+
+    <section id="home" class="relative h-screen w-full text-white overflow-hidden">
+        <!-- Vanta Background -->
+        <div id="vanta-bg" class="absolute top-0 left-0 w-full h-full z-0"></div>
+      
+        <!-- Content Layer -->
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div class="flex flex-col md:flex-row items-center w-full">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+              <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-blue-200">Sandeep Nadesan</span></h1>
+              <h2 class="text-2xl md:text-3xl font-semibold mb-6">AI/ML Engineer</h2>
+              <p class="text-lg mb-8 text-blue-100">Passionate ML/DL engineer developing intelligent solutions and driving innovation through data-driven insights.</p>
+              <div class="flex space-x-4">
+                <a href="#contact" class="px-6 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition duration-300">Hire Me</a>
+                <a href="22ADR091-SANDEEPN-CORE.pdf" class="px-6 py-3 border border-white text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300">Download CV</a>
+              </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+              <!-- Profile Image Section -->
+              <div class="relative flex items-center justify-center">
+                <!-- Glowing Animation Ring -->
+                <div class="absolute w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse opacity-40 blur-xl"></div>
+      
+                <!-- Profile Image Wrapper with Subtle Hover -->
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-white/10 backdrop-blur-md shadow-2xl flex items-center justify-center transition-all duration-500 hover:scale-105 hover:rotate-1">
+                  <img src="sans.jpeg" alt="Profile" class="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-white shadow-xl transition-all duration-500 hover:scale-110">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <script>
+        VANTA.NET({
+          el: "#vanta-bg",
+          mouseControls: true,
+          touchControls: true,
+          minHeight: 200.00,
+          minWidth: 200.00,
+          scale: 1.00,
+          scaleMobile: 1.00,
+          color: 0x3b82f6,
+          backgroundColor: 0x0a0a23
+        });
+      </script>
+      
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">About Me</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <img src="sans.jpeg" 
+                         alt="About" 
+                         class="w-64 h-64 rounded-lg object-cover shadow-lg">
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">AI/ML Engineer</h3>
+                    <p class="text-gray-600 mb-6">
+                        Passionate ML and DL engineer eager to develop intelligent solutions and drive innovation through data-driven insights. 
+                        Committed to continuous learning and development in machine learning, deep learning and AI technologies.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-2">Name:</h4>
+                            <p class="text-gray-600">Sandeep Nadesan</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-2">Email:</h4>
+                            <p class="text-gray-600">sandeepnadesankns@gmail.com</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-2">Phone:</h4>
+                            <p class="text-gray-600">+91 9944882544</p>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800 mb-2">Location:</h4>
+                            <p class="text-gray-600">Karur, Tamil Nadu</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/sandeepn-29-/" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/sandeepnadesan" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Education</h2>
+            <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+          </div>
+          <div class="space-y-8">
+            <div class="relative pl-10 timeline-item animate-fade-in-up">
+              <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="font-bold text-gray-800">B.Tech Artificial Intelligence and Data Science</h4>
+                  <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Current</span>
+                </div>
+                <h5 class="text-blue-600 font-medium mb-2">Kongu Engineering College</h5>
+                <p class="text-gray-600">CGPA: 8.14/10.0</p>
+              </div>
+            </div>
+            <div class="relative pl-10 timeline-item animate-fade-in-up delay-100">
+              <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                <i class="fas fa-school"></i>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="font-bold text-gray-800">Higher Secondary Education</h4>
+                  <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                </div>
+                <h5 class="text-blue-600 font-medium mb-2">Sri Sankara Vidyalayaa</h5>
+                <p class="text-gray-600">Percentage: 68.4%</p>
+              </div>
+            </div>
+            <div class="relative pl-10 animate-fade-in-up delay-200">
+              <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                <i class="fas fa-school"></i>
+              </div>
+              <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="font-bold text-gray-800">Secondary School Leaving Certificate</h4>
+                  <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Completed</span>
+                </div>
+                <h5 class="text-blue-600 font-medium mb-2">Sri Sankara Vidyalayaa</h5>
+                <p class="text-gray-600">Percentage: 82.6%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <style>
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-fade-in-up {
+          animation: fadeInUp 1s ease-out forwards;
+        }
+        .delay-100 {
+          animation-delay: 0.1s;
+        }
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+      </style>
+      
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Experience</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="space-y-8">
+                <div class="relative pl-10 timeline-item">
+                    <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-gray-800">Data Engineer Intern</h4>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Jan 2023 - Mar 2023</span>
+                        </div>
+                        <h5 class="text-blue-600 font-medium mb-2">Centillion Labs</h5>
+                        <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                            <li>Optimized data pipelines and ensured data integrity leveraging GCP and AWS for scalable cloud solutions</li>
+                            <li>Designed secure cloud infrastructures and contributed to risk assessment and threat mitigation</li>
+                            <li>Received "Feather on the Cap Award" for exceptional performance and commitment</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="relative pl-10">
+                    <div class="absolute left-0 top-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-bold text-gray-800">Leadership Roles</h4>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <h5 class="text-blue-600 font-medium mb-2">Joint Secretary</h5>
+                                <p class="text-gray-600">Association of AI Department, KEC</p>
+                            </div>
+                            <div>
+                                <h5 class="text-blue-600 font-medium mb-2">Executive Member</h5>
+                                <p class="text-gray-600">National Service Scheme, KEC</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Skills</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Technical Skills -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                        <i class="fas fa-code text-blue-600 mr-3"></i> Technical Skills
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">Java</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">C</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                         <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">Python</span>
+                                <span class="text-sm text-gray-500">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">Machine Learning</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">Deep Learning</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">React</span>
+                                <span class="text-sm text-gray-500">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">MongoDB/SQL</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Professional Skills -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                        <i class="fas fa-chart-line text-blue-600 mr-3"></i> Professional Skills
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">Leadership</span>
+                                <span class="text-sm text-gray-500">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">Problem Solving</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">Team Management</span>
+                                <span class="text-sm text-gray-500">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="font-medium text-gray-700">Time Management</span>
+                                <span class="text-sm text-gray-500">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Tools & Technologies -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-tools text-blue-600 mr-3"></i> Tools & Technologies
+                </h3>
+                <div class="flex flex-wrap gap-4">
+                    <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                        <i class="fab fa-python text-gray-700 mr-2"></i>
+                        <span class="text-gray-700">Python</span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                        <i class="fab fa-react text-gray-700 mr-2"></i>
+                        <span class="text-gray-700">React</span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                        <i class="fas fa-database text-gray-700 mr-2"></i>
+                        <span class="text-gray-700">MongoDB</span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                        <i class="fab fa-aws text-gray-700 mr-2"></i>
+                        <span class="text-gray-700">AWS</span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                        <i class="fab fa-google text-gray-700 mr-2"></i>
+                        <span class="text-gray-700">GCP</span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                        <i class="fab fa-git-alt text-gray-700 mr-2"></i>
+                        <span class="text-gray-700">Git</span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                        <i class="fab fa-github text-gray-700 mr-2"></i>
+                        <span class="text-gray-700">GitHub</span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-100 rounded-full flex items-center">
+                        <i class="fas fa-flask text-gray-700 mr-2"></i>
+                        <span class="text-gray-700">Flask</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">My Projects</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="data:image/png;base64,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" 
+                             alt="Project 1" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">AI/ML</div>
+                            <div class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Web</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Hugging Faces Implementation</h3>
+                        <p class="text-gray-600 mb-4">
+                            Implemented three models using Hugging Face models, integrated them into a web interface with Python, HTML, CSS.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/sandeepnadesan/hugging_face_project" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="https://github.com/sandeepnadesan/hugging_face_project" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Project 2" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">Healthcare</div>
+                            <div class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">AI</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Health Care Monitor</h3>
+                        <p class="text-gray-600 mb-4">
+                            Disease prediction application leveraging VertexAI with user-friendly UI interface (Python, HTML, CSS).
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/sandeepnadesan/Disease_Prediction" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="https://github.com/sandeepnadesan/Disease_Prediction" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMSEhUTEhMWFhMVFxYVFxcXFRYSFRUSGBYdGBUTFRgYHSkgGBslGxYVIjEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGzAlICAtLS0tLy0rLS0tLS0tKy8tLS0tNS0tLS0tLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAKIBNwMBEQACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABQIDBAYHAQj/xABFEAACAQIDAwgGBwYGAQUAAAABAgADEQQSIQUxUQYHEyJBYXGRFFKBobHRFRcyk8Hh8DRUdIKSsiMkM0JTYvEIRHKiwv/EABsBAQACAwEBAAAAAAAAAAAAAAADBAECBQYH/8QAOhEAAgECAwUFBgUDBAMAAAAAAAECAxEEITEFEhNBUWFxgaGxBiIykdHhFELB8PEVM1IjU2KigsLi/9oADAMBAAIRAxEAPwDqkvFUQBAEAQBAEAQBAEAQBAEAQBMATIEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAqXdpNXrmZWmR40IM8AmTBV0fGw8flMXFhYcT5RmMhdeB8x8ozGQuvA+Y+UZjIWHE+UZjIdHwsfD5RcWKTMgTIEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAyMPgywvew87yKdRRyN4wbL/wBHf9vd+c143YbcLtH0d/2935xxuwcLtH0d/wBvd+ccbsHC7R9Hf9vd+ccbsHC7SziMEVFwbjym0aqbsayg0Y0lNDyvUSmrPUYKqgsxJChVAuSzHRQBNbmbGlYjnb2YrFRWcgaXSk+U+BNiZHxIm25Is/W5sz/kq/dNM8WI4bLg52tldtWr9y014xnhsq+trZP/AC1vuTMcYzwx9bWyf+Wt9yY4w4ZS3O1srsq1fuWm3GMcNlv63Nmf8lX7ppnixMcNl/D87ezGYKazgHS70nyjxIuRMcSI3JG6UKiVFV6bBlYBlIIYMpFwVYaMCJJc1sezJg9yHgfKLoWGQ8D5RdCwyHgfKLoWPJkCAIAAvumACLQBMgQBAEAQBAEAQBAEAQBAPIBN0R1R4D4SlLVllaEPyz5QjZ+Dq4s02qdGF6inLcswUXaxyi7C5sZgyRaculOyPpX0epbJn6G92v0nR/at9i/WzW+zrbsgFWzOXCVtknafQOFVKjmkCGN6bFSFawut1PWtuvppAM3kLynG0sImKFJqWYspQnNYqbEq1hmHfYdvCAT7jQzK1DIUNYab+Pyly3Uq3Od89rv6FRphiqV8TTpueK2ZgPDMFP8AKJFVeViSms7m9YXYNHD9BSwq4enh6YYVFNMM79WyHNvLX1JOpkLhKzssy3TqUFCSmryytnp1uZlLCJmXMMOVynNZFuWvoRputI8PTqqklWznza0K1SV6t4NbltOdzL9Gw/qUv6V+Uk3JdDbeXUejYf1KX9K/KNyXQby6j0bD+pS/pX5RuS6DeXUejYf1KX9K/KNyXQby6luvhaJHVWiDcalU3XF+zheZUHzRrNtr3XmRDcnqVenUo4xcPUputrKiKQfWUhQVPAjUTecV+VMrYZV4t8aafd/CNJ5kaj+g1abNmWhialNDwXKrEdwzFj/NNqTysT1Fnc6ds7ViTvtFXJCnqWeU230wNJatSnWqBqiU8tGmargtezEDcNN/EgbyJXJj0beT030Lo6ufoen6TJ/g5c2XLnv9r2W776QByZ2+mOomtTp1aah3p5aydE90NibX3fmN4MAubSHWHeJYo6ENTUxJMRiAVqb6E2+HtmumZnsKWNzMowzyZAgCAIAgCAIAgCAIAEwCura+kwjLKJsYJfCVQyjiBYypOLTLEHdF1lBFjqDoRxE0NjzILWsLWtbstwtAAQAWAFrWt2W4WgBECgAAADcALAeAgFGIqhVJPs7zNoRbZrJ2RH4fD31O7hLEp8kQxj1Oe8/H7Ng/4yn/AGNIGSo3pt8tEAmQIAgwIAgyIAXfMA0TmF/ZsZ/GP/YsqonZ0lB0ZzAXB3jh3iSP3lY1Xuu5c+kF4HyHzmvBkZ4iH0gvA+Q+ccGQ4iH0gvA+Q+ccGQ4iMPFV85v2bpNCO6iOUrsszc1EAQBAEAQBAEAQBAEAQBAEAQBAEAAzAKukPE+ZiyF2OkPE+ZiyF2OkPE+ZiyF2eljYanXvO6YsjN2XMPTzG53fGaydskZirmZIiU5lz8fs2D/jKf8AY01YRvTb5aIDGrYsDdqfdPOY/wBpMPQbjR9+X/X58/D5l+hs+c855LzMV8Sx7beGk8tidvY6v+fdXSOXnr5nTp4KjDlfvzLRYnfOVOrOo7zk33u5ZUUtEeAzWMnF3i7GWr6lxMQw7T8Z0aG18bRfu1H45rzuQTwtGesV6GTSxvrD2iekwXtTGXu4mNu1aeK1+V+451bZrWdN+DMxDe1p6unUhUgpwd0+aOZKLi7NZnO+YfGoKWMpsQD6UzC7AZrqAQAd9rDzmsaUnDfS5v8AQ3dSKluvodXmhuYWJpWNxuPuk0JXIpRsW947x8JnRmpTNgIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAeoLn9bphsI9+0fGNENWSCLYWErt3JkrGtY3lci1AqLnQGzNuvxyDtt37/fOnT2bKULydnyX1KE8fFStFXXN/Q0jnj2umJp4SlRDMfS6Zvltc5WFgN5OvCUsVh5YenxKrSXoWqOIjWnuQzN6xWJzEgbvjPn22NuTxTdKk7U/OXf2dnz7O7hMEqS3pZy9DGnni8XaOGd/sqT3gaecs0MHXr/24N+GXz0NJVYQ+Jl/6LreofNfnLf9Fx3+35r6kf4ql/l6j6LreofNfnH9Fx3+35r6j8VS/wAvUt1cBUXeh9gv8JFV2Zi6SvKm/DP0ubRr05aSMeUCUu4euVPd2idLZu1K2BneGcXrHk/o+0r4jDQrRs9eTObck+TmJoJiukpmy4hjmGqlSqkOO0rY77aWINiDPq+wdoUMRR3oS1enPu7zye1MNUjPNZJGzbLxTmtRzVWUKwUMSWyqTqoB7Du4Ts16cVSlaN7+Zz6M5cSN5HSXW4sZ5lOx3mrkf9k+Esaoh0Z462P63QmGeTIAEwBaLgWi4FouBaAJkCAIAgCAIAgCAIAgCAIAgCAIBUNAe/T8T+E15jkXsGmpPsmtR8jeC5mUzAAkmwGpPYAN5kSV3ZG7dszl20qiNVdqYyoWJUd3G3Zc3Nuy89VRjKNNKbuzz1Vxc246GdsnZy9Wq6gsLlL/AO24sWHAkEi/A98+be2m2OJU/A03lHOXa+S8Ofb3Hp9h4Lcjx5ay07uvj6d5MTwSVz0BPbN2QAA1QXPYvYPHiZ7LZmwoQiqmIV305Lv6vyOZiMW292GnUmAJ6RK2SKAmQIAgGFjtmpU1tZvWH48Zy8fsmhi03a0uq/Xr6lijiZ0+1dDWq9EoxVhYj9XE8FiMPUw9R06izR2ITU47yL2zsX0ba/ZOh+c6GyNovB1ld+5LX6+HoQ4mhxYZarQ1Xb2HWniKiL9kG4tuAYBrDwvafbMJUdSjGT5o8FiYKFWUUbnyY2s2IRswAKFVuL9bTUnv09842Nw0aMluvU6uErurF35GdjE1B4yvTfInmiydw7tPxH4zbmacivCUszAHdvmJysjaCuyXAtulQsHt4AgCAIBG7QogEEdvxlilJvJkNSNszEkxGIAgCAIAgCAIAgCAIAgCAIBU/YO74/oTVBmZhxZb+0yKWciWOSNV5QcpKdWiadLNdjYkjL1N589PZedbCYGdOpvTtl6nNxOMhOnuw5+hrGGo53VeJ93b7ryztLGLB4SpiH+VX73yXi7IqYWg69aNNc35c/I2kC2g3T4LUqSqTc5u7bu31b1PocYqKSWiJDZ1LKwdhe2oHf2Geq2LsV3jiavel6N+q8Gc7F4tZ04+LNiw9cOLj2jhPVtWOcmUY/G06FNqtZ1SmguzMbADv/XbCV8kZNN+tzZV/wDWfx6CtY//AFvJOBPoab8epWvOxsk/+5YeOHxH4U44M+hnfj1L9PnQ2Ud2LHtpV1+KTHBn0McSPUktk8s8BiXFOhiqbVD9lLlWbiFDAZja5sJh05LNo2Uk9DM21gw6hhoy+8cPP8ZxtqbKjjUmnaS0fXsf7yLWHxLpdqNcZbGxngq1GdGo6c1ZrU7EZKSUlzIXG4EviFUG3SkC5O47j+u+fWvZTaXG2ZaWtL3fDWPll4HjtrYTdxeWk8/Hn9fE6HTphQFAsAAB4DQTEpOTuy4kkrIoxK3U92szB5mJaGGm4juv5foyVkSL+zvt+wzSr8JvT1JSVic0va3IQ1trUNpeksooqB0QW97BhZXzdVTn1FjfXjoA5RchDitp4XaAxT0xhsv+EBfNlYtZWzdUNfKwsbjxgDlZyEbG4/CY0Yp6Qw2W9MAkNlfOShzDIW+yxsbgDhAN0gGDtTcvtk1HmRVTAlgiEAQBAEAQBAEAQBAEAQBAEAqq7/L4TVaBmZUpk0yoNiVIB4Ei15HGVppvqStXjZHONq7JqYcqKmXrXsVNxpa+8DiPOekoYmFdNx5dTg1qE6Vt7mV7CS7k8F95P5GeT9uK7hgI01+eSv3JN+tjrbAp72Icui9f2yeWfONlUIV8ZTp1NG/RN28T1OJm4UnKOpn4RyQb9k+mWS0PPknsw9Y+H4zWWhsjQ/8A1AVCMDQAJAbErccQKVQgHjqAfYJJh/iZrV+E4/yP2QmMxtDDVHNNKrEMwtcAIzWW+mYlQov2sNDulmct2LZXhG7sTnOlyRo7Nr0koVGZaqFyjkM6FTa9wB1WubXG9W14aUpuSzNqkFHQ85ruSVHaWIqJXqMq06YcIhCvUJa1wSD1V0vp/uWZqzcVkKcFLUheWWyxgMbWoUarMKDKUqXAcHIri5WwzqTa4tqvZum0HvRTZhrdlZH1KjlqIJ3sgJ8St5Q5lrka1jh1vZPD+0sUsYmucVf5teiOtgG3S8SjB7PStUXPuS7AcTpoe7cfZLnsljZ0a1WlH88fR/Rsg2ph41YwlL8r9f4Rs89gc4pqDQ+BmVqYehHBwLkmwAYkncBY3Jk0tCJEPsrlbgq9RUoYqk9Q6qoazN3AG1za9wNZjejLIzuyWZs67R4r5GRuj2m/FPfpEeqfOY4L6jij6RHqnzjgvqOKPpEeqfOOC+o4p59Ij1T5xwX1HFMSvWLG5/8AEmjFRWRHKVy3NjAgCAIAgCAIAgCAIB5AJhMMoFsoPiLyo5yfMsKKIs7ewPR1qvTUejw7mnWe65adQEDK3fcgd5MxvS6md1dC8dqYTPRTpKWfEKXoi63qoFzZk4ixveN6XUbq6GXisOuU2ABAvoLTaE3vGsoqxyTlryhx1fFCjgsUuHw6VPRWYZDVfEhczWvrYaKACDcMbEWkVSpZtFijh3NJ3yeRI4bE1a+EenXq9NiMHUXO5VUd6FVcyVGRSQutxv1FO51JnS2TX/1LPn+hz9q4fdWXIu8n97/y/jOB7fN7lDvl/wCpN7O/FU/8f1JifN4ycWpRdmj07V8mSGFrKQBoDw3XM+gbO2zQxFNKpJKejTyu+zv6HFr4ScJNxV0TeBw5W5O8+4TsN3KyRD8vOSq7SwpoFsjqwqU3tcLUAI6w7VIZgfG/ZM057juYlHeVjjp5nNpg6HD6biKzgdxH+HeWePAh4L6lVbmh2q7FnagzHezV3Zj2C5KXMceBl0W+Yo80O1UYMjUFYbmWu6sOzQhLiOPAKi1zMrZPMvjHqj0qpRSje7lHapUYXuyrdQATr1idL3sd0w8RG2QVLO7Z2raGJSmmS4GlgOC7py6+Ow+H/uzSetufyLcKM5/CjW69TMb/AKtPn20cY8XiJVeXJdEjs0KXDgomVsf/AFR4GdD2dv8AjV3Mhx39rxRn7R2stFgrK1ipOa3VBHYT+t4nup1VB2ObRwzqq6ZmrUDLmG4i/ukkXezRBOLi3F8iOIlkrml0+SmGOIptku9F0P2VphWXK4bqgZj1V4nXsBtOZS31UUWdyuqTouos8vXI3WdQ4YgCAIBUi9/YZq2EUmZAmQIAgCAIAgCAIAgCAeQCXTFqRvAlR05IsKaME7MweSrT6Gj0dZi9VOjTLVcm5dxazNcA3PCY3JdBvrqXGweFL0nNOlnogrSbIt6SkZStM26otpYRuS6DfXUvYnEgjKvWZrgD4knsAmVFp3ZhyTVkQ228MxVTlAIuM62ZhcAX1XukGJu80jobPcU2m8zB5QCouG/w1VVIHS2/1CugBOm7j4jsvOnsx01Nb6z5d/70OTtPiPe3Xfr3EDsEnM2hsRvtpcdl+NjOZ7dUt7Bwmvyy8mnn80jX2fnatKPVej+5NT5YetEAzMPtOquga47ARf8AOdXDbYxlJKMZXXR5/crzw1KWbRLI2JIuco7ra+3Wepw39TqLeqOMfBt+v6nPqfh45RTY6Sv+k/OX1QxHOqvCH/0yFzh/j5/YdLX/AEky6FflV/6r6jfh/j5noOJO4r7Rb8ZWq0cel/p1It9sWv1ZvGdF/FF/Mj8VtGupKscp7gPcZ5nF7W2jSk6VT3X2JffyL9PDUJLeWZGsxJuTcntOpnCnOU3vSd2+bLiSSsjyagwNr12RVyEhi2hUkNuO62vDzntPYjDqpjKk5K6jDzbVvJM4m3qrhQjGLzcvRP7Gx7FwzvhgmJVi12HXN2K30Jvr2kaz1+PjTnN8O1uzS5QwM6tOKcte3oSCoETKosACAOE5GHquE92X8F2snNb3MtUwAQNCSbHuFr/LzmcRiZTlaDsl5mtOjuq8lqWq2DUNnF8xIA4C5sSB4X36Ssqkr3vn1LTqPh8Oyt3FddQDp5fr2+U6mDrSqRalyOdXgovIty6QiAIAmAJkCAIAgCAIAgCAIBWmo0Av+H6+M1ZlFLkdn675lGGeTIEAQBALFXFGmwIAJItY8L9hG6+nHdKmIq7jSLuEw3FUneyRmjGhaeZiMxubXvYknTwHh2TDmo6s1jRnN2irmFj9qU3GVOsSGRlKmwRhqdRqdAN/aZG8Qkrx1LEMDOUt2WS+ZIPhV6IogAW3VAAAvvBsO+R7RovF4ecG7uSyv1Wa8yvQaozVla37Zrs+XtNOzPQiYBnbFQGst+y59oGk6+wqcZ42O9yu/H95lbFtqk7G0T6AcYQBAEAhuUaDKp7bkey35TzHtNTjwoT53t4W+x0MA3vNEFPHnSEAjGHS4qlTG4Mt/PM3uE+q+ymD/CbMnXks6mfgso+d33M8ntatxsZGmtI+ur8rG/ycnMfG01ZSrGwYEaaHzlSvQcvfisyalV3HmRGHwBpG9JhYCxJtfLe5vxHbIKtKUIpy5l6OLpVU4yWhKBCcpD3AN9wN9CLArbj3ysVyxV1Zj4L7AL/FjOpgPhfeVMRqjydAriAIAgCAIAgCAIAgCAIAgAGYAmQIAgCAIBi4vChjmJAAHaL2t2yrWw3ElvXL2GxvBhu7t876nKq3OFXDsadOiUucudXJy30zWcAm0ijhoI9UsFvwW9Jp2ztb9UzauQnKhtoValHEBFYIr0+jUoLKSHGpOvWXymZ0lJWZzMbh3gt2pTbaeTvn2rS3adHRQAANwFh4CSJWVjhSbbu+ZB7Zw4VgwtZ76f8AbebfGeH9oNn8Grx4L3Z69kvvr33Otgq+9Hceq9DAnnC8XcJXyOrcD7tx90s4LEvD141Vyflo/I0qw34OPU2+nUDAEG4Oon0unUjUgpwd09Dgyi4uzKpuYEAQDW9u4sO4Ublv7WO/9eM8Pt/Gxr1lTg8oevP5fU62DpOEd58yNnALhZxNUqOqCznRVAuWbwE6+xdly2hiVT0gs5vpH6vRfZlPHYpYek5ayeSXV/vNluhySrEozsBmN3sesut9Ownw3GfX/wAfRpw3KayirLp0+R5BYKrKSlN65vr/ACbsJxTrGBiXu3hpJoqyIZO7InbnKOlgUV6quwdsgCBSb2Jv1iNNPfK2Loyq2s9DMa8aKblzIb6ycAdTTrA8ejS/mHlL8HU7Db+oUujJvYe3KOMp9JQDKisUs4CnMAGJsCfWGvjL2EpSpxal1MTqxqZxJCWzQQBAEAQBAEAQBAEAQBAEAQBAEAQBAEAjuUVUphMQw3ijVI8chtNZaMmw0d6tCL5tep8/yI+hEzyO2j6PjcPVvoKgVuzqP1H9zE+yYkU9oUuLh5x7L/LM+i5g8Uc457MU9KjgqlNirrjEsR303BHeCCQR2gyGvRhWg6dRXT1NoScXvLVGw4nDlT3dh+c8BtXZFXAzvrB6P9H2+vLouzhsVGsu3oWZyC0ZWCx70vsm44Hd+U6OB2nXwmUHePR6fYhq0IVNdSSXb47UPsP5TvQ9poW96m/B/ZFN4B8pHp2+PUPmJl+01LlTfzQ/AP8AyMPF7YdxYdUd2p85y8Zt6vXjuwW6uzX5/RE9LBwg7vNkdOGWyujSLGw/8S3gsDWxdTh0l3vku1kVatClHekRXNNtipjBjK1SwAxHRU0A+xTRQbX7blrnv7rAfRNn4Ong6CpQ1vdvq8vTl/Jw61SVWpvvpkuhv0ukZZxNWw7z+rzaEbs1k7GFJyI5zztV+th6fAVHPtKqvwaaSKmKeSRz0TQqM63zYIBgQR21HJ8dB8AJvHQ6FD4Pn6m2zcmEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAIrlTTZsHXVFLO1NlCqLkk6WAHjNZ6FjCSjGvCUnZJp+ZxepydxQsegqEEBtEbS/Ye+VVWi8rnt44qm022Unk/iv3er/AEN8pl1YaXNliaTV09T6I2XiTUo03IIZkRmB0IYqCQR2G82seGlZSaXI55z8fs2D/jKf9jTVmEb043yxOEZxcZK6fJkKbTujDrYL1fKeTx/svGTc8K7f8Xp4P637zqUNpNZVF4oxXpMN4M8ridn4rD/3YNduq+ayOlTr06nwsolMlEA9VCdwvJ6GGrV3alBy7kazqRhnJ2Mmlgj/ALtPjPR4L2Xqze9iXuros39F5nPrbSisqav6GdSQCwAnssNhaOGp7lKNl+9epyKlWVSW9J3NF5hf2bGfxj/2LNUSM6XUqBRczdK5huxgsSx75NkkQ6spmwOS859QnG29WkgHtLN/+vdI5alHE/Gu41RqdgD6wuPAMV19qmYIGsl++Z1rmy/YV/8AnU+M2joX6PwfP1Nrm5MIAgCAIAgCAIAgCAIAgCAIAgCAIAgCABBggsugHGw89BONa9a3b+p6Xethr/8AH9CuqRdiPWb+4/jFZXqtLqYwr3cPFy5Ly/gmcKGpqo7VUA8DYTrRit1I8/KV5uXVmhc+dUNhsHx9Mp6fyNIZxsbxlc35t8sEImQIBSUB3geUr1MJh6nx04vvSZvGrUjpJ/M8FNeA8hNIYHCwd404ruivoZdao9ZP5sqlpK2SIz2ZAXfMA0DmLrBcNjOPpj/2LK8I3JpSsdBZixk6SSIs2GNtB7T+A7o7TBTNgc4519n2ajiAN4NJvEXZPcankJpIqYqOkjn80KnI6zzXvfBW9WrUHwP4zeJ0KHwI26bkwgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAEGCDDWseBv7V6wHunJhlWbfJt+p6Cpd4VRWrUV87F3BUrso7F6x9n2ffr/KZthYb9TefI02hUVOioLnl4ImQ3Yd3vE6duhw7nOee5f8vhO0el0/7GkVR5Ikgjojb5KRiZAgCAIAgCAF3zAOdcyC/5fF9g9Lf+xZFTeTJJo6OW7Bu95klupHcpmwEAheWWz+nwdZALsF6ReOZOtYeIBHtmstCOpHei0cRmhzeR1Dmmf/LVl4VifOmvym0S9h/gN4m5YEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAAgGi0uUCV6a1cN10SuqVgQQ6UySucDgCUa+oyhvZyJpqcu256CnJSpQt+W1/lb7m3bMXqk9pJ9gU2A+J/ml7CRSp36nM2hNyrtPlb6mZLJSOc894IwmHqWJWniqbNbWy5W189PEiRVdDenqdCwuISqi1KbB0cBlZTcMp3EGSJmhcymAMpgDKYAymAMpgDKYBaxWJSkjVKjBEQFmZtAFG8kw2Dn3MehODr1CCFq4moy37VyqCfO48QZHS0N6mp0aSmggCAaXt7lhiEd6WGwFZypZeldWFLQG7qqgtUFxoLrfjrIpVGtESRgubNGNbFkIq7KQtcAscOyZuICh7Lfjew4StuT6ssXo2XuR+RuHNpicQXxCVsIMMlqbIFpugZrsHuWJzG2XhJqKaunfxIa25lupLuN9lghEAQBAEAQBAEAQBAEAQBAEAQBAEAQBAEA0tubqipLUK9ehVZnZnpNbMjuWFN0PVIXNYHfYSGVGMtSaFecHdMmOTewamEzBsXWrqbWWqE6p4hgMx0Ft9ptCG4rI0qVHN3epOSQ0MfaGCp16b0qyB6bjKyncR+B7bjUETDVwnY0E80OGBPRYrFU0JJyLUWwv2Dq/HWR8JG/EY+qWl+/Yz7xflHC7RxOwfVLS/fsZ94vyjhdo4nYPqlpfv2M+8X5Rwu0cTsH1S0v37GfeL8o4XaOJ2D6paX79jPvF+UcLtHE7B9UtL9+xn3i/KOF2jidgHNDhiR0uKxVRAQcjVFsbdh6vw113xwkOIzfsBgqdCmtKkgSmgyqo3Afj49skSsaGRMgQBAEAXgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgCAIAgH//Z" 
+                             alt="Project 3" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">Chatbot</div>
+                            <div class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">AI</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Farm2Bag Chatbot</h3>
+                        <p class="text-gray-600 mb-4">
+                            Chatbot for Farm2Bag website using GCP's Vertex AI with RAG for dynamic information retrieval (React, JavaScript).
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/sandeepnadesan/farm2bag" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="https://github.com/sandeepnadesan/farm2bag" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://repository-images.githubusercontent.com/622659874/e16b832c-fdd7-4111-80bd-4f2048261817" 
+                             alt="Project 4" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">Web</div>
+                            <div class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Analysis</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Dark Pattern Analysis</h3>
+                        <p class="text-gray-600 mb-4">
+                            Web extension to identify dark patterns in e-commerce websites (JavaScript, HTML, CSS).
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/sandeepnadesan/DARK_PATTERN" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="https://github.com/sandeepnadesan/DARK_PATTERN" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Project 5" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">Data</div>
+                            <div class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Analysis</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Crime Data Analysis</h3>
+                        <p class="text-gray-600 mb-4">
+                            Analysis of crime data using PowerBI to improve data interpretation and decision-making.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://github.com/sandeepnadesan/crime_data_analysis" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="https://github.com/sandeepnadesan/crime_data_analysis" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition duration-300 card-hover">
+                    <div class="h-48 overflow-hidden">
+                        <img src="wh.png"
+                             alt="Project 6" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2">Full Stack</div>
+                            <div class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Web</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Warehouse Management</h3>
+                        <p class="text-gray-600 mb-4">
+                            A web-based Warehouse Management System for efficiently tracking, managing, and organizing inventory operations.
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <a href="https://warehousemanagment-sandeepnadesans-projects.vercel.app/" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                View Project <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                            <a href="https://github.com/sandeepnadesan/warehouse_managment" class="text-gray-500 hover:text-gray-700">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Achievements</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-trophy text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">1st Place in 24hr Hackathon</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Secured 1st place in 24 hrs Hackathon for creating a responsive health care monitoring app for people.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-file-alt text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Published Papers</h3>
+                    </div>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                        <li>Published paper on Stress analysis in the IEEE Magazine</li>
+                        <li>Published paper on Advanced Deep Learning Techniques for Automated Freshness Detection and Quality Assessment of Fruits in SSRN Magazine</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-certificate text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Certifications</h3>
+                    </div>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                        <li>MongoDB Associate Developer</li>
+                        <li>Oracle Cloud Infrastructure</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition duration-300">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-file-alt text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Papers Presented</h3>
+                    </div>
+                    <ul class="list-disc pl-5 text-gray-600 space-y-2">
+                        <li>Stress Analysis Using ML (Feb 2023)</li>
+                        <li>Gas Leakage Determination using Sensor (Oct 2023)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">Get In Touch</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                    <p class="text-gray-600 mb-8">
+                        Feel free to reach out to me for any questions or opportunities. I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Location</h4>
+                                <p class="text-gray-600">Karur, Tamil Nadu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Email</h4>
+                                <p class="text-gray-600">sandeepnadesankns@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800 mb-1">Phone</h4>
+                                <p class="text-gray-600">+91 9944882544</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="font-medium text-gray-800 mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 hover:bg-blue-100 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="bg-gray-50 p-8 rounded-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="John Doe">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="john@example.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Job Opportunity">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Hello, I would like to talk about..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold">Sandeep Nadesan</span>
+                    <p class="text-gray-400 mt-1">AI/ML Engineer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/sandeepn-29-/" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/sandeepnadesan/" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Sandeep Nadesan. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hidden items-center justify-center">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
